@@ -6,7 +6,8 @@
 			"command": "dotnet",
 			"type": "process",
 			"args": [
-				"build"
+				"build",
+				"src"
 			],
 			"problemMatcher": "$msCompile"
 		},
@@ -15,7 +16,9 @@
 			"command": "dotnet",
 			"type": "process",
 			"args": [
-				"run"
+				"run",
+				"--project",
+				"src"
 			],
 			"problemMatcher": "$msCompile"
 		},
@@ -28,6 +31,17 @@
 			"dependsOrder": "sequence",
 			"group": {
 				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Run Tests",
+			"command": "dotnet",
+			"args": [
+				"test"
+			],
+			"group": {
+				"kind": "test",
 				"isDefault": true
 			}
 		}
