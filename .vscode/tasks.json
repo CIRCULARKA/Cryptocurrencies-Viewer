@@ -44,6 +44,19 @@
 				"kind": "test",
 				"isDefault": true
 			}
+		},
+		{
+			"label": "Git: add opened file",
+			"command": "git",
+			"args": [
+				"add",
+				"${file}"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
 		}
 	]
 }
