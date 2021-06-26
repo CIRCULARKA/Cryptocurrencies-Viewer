@@ -6,6 +6,8 @@ namespace CryptocurrenciesViewer.Models
 	{
 		public string Name { get; set; }
 
+		public string Symbol { get; set; }
+
 		public decimal MarketCapitalization { get; set; }
 	}
 }
