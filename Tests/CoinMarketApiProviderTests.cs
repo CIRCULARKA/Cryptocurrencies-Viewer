@@ -4,13 +4,13 @@ using CryptocurrenciesViewer.CoinMarketApi;
 
 namespace CryptocurrenciesViewer.Tests
 {
-	public class CoinMarketApiProviderTests
+	public class ApiProviderTests
 	{
 		[Fact]
 		public void IsApiLoadsProperly()
 		{
 			// Assert
-			var apiProvider = new CoinMarketApiProvider(
+			var apiProvider = new ApiProvider(
 				new StreamReader(TestsDirectoryPath + "api_test.txt")
 			);
 

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace CryptocurrenciesViewer.CoinMarketApi
 {
-	public class CoinMarketApiDeserializer
+	public class DataDeserializer
 	{
 		public IEnumerable<CryptoCurrency> DeserializeJsonData(string data)
 		{

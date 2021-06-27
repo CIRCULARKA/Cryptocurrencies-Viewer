@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using CryptocurrenciesViewer.Models;
 using CryptocurrenciesViewer.CoinMarketApi;
 
-public class CoinMarketApiDeserializerTests
+public class DataDeserializerTests
 {
 	[Fact]
 	public void IsDeserializedProperly()
 	{
 		// Arrange
-		var deserializer = new CoinMarketApiDeserializer();
+		var deserializer = new DataDeserializer();
 
 		var input = "{\"data\":[{\"id\":1,\"name\":\"Bitcoin\",\"symbol\":\"BTC\",\"quote\"" +
 			":{\"USD\":{\"price\":31500.808533861516,\"percent_change_1h\":0.85104479,\"percent_change_24h\":-0.9601547," +

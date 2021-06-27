@@ -2,11 +2,11 @@ using System.IO;
 
 namespace CryptocurrenciesViewer.CoinMarketApi
 {
-	public class CoinMarketApiProvider
+	public class ApiProvider
 	{
 		private StreamReader _reader;
 
-		public CoinMarketApiProvider(StreamReader reader) =>
+		public ApiProvider(StreamReader reader) =>
 			_reader = reader;
 
 		/// <summary>
