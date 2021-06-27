@@ -7,7 +7,7 @@ namespace CryptocurrenciesViewer.Models.Factories
 	public class RepositoryFactory
 	{
 		private string _currencyEndpoint =
-			"https://pro.coinmarketcap.com/api/v1/cryptocurrency/listings/latest";
+			"https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
 
 		public RepositoryFactory() { }
 
@@ -23,9 +23,8 @@ namespace CryptocurrenciesViewer.Models.Factories
 					new ApiProvider(
 						new StreamReader(
 							Directory.
-								GetParent(
-									Directory.GetCurrentDirectory()
-								).Parent.Parent.FullName + "\\"
+								GetCurrentDirectory() +
+								"\\src\\api.txt"
 						)
 					)
 				)
