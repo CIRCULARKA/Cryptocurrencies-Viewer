@@ -4,6 +4,7 @@
 	<table class="table">
 		<thead>
 			<tr>
+				<th scope="col"></th>
 				<th scope="col">Name</th>
 				<th scope="col">Symbol</th>
 				<th scope="col">Price</th>
@@ -16,6 +17,9 @@
 			@foreach (var currency in Model)
 			{
 				<tr>
+					<th>
+						<img src="https://s2.coinmarketcap.com/static/img/coins/32x32/@(currency.CurrencyID).png">
+					</th>
 					<th>@currency.Name</th>
 					<th>@currency.Symbol</th>
 					<th>@currency.Price</th>
