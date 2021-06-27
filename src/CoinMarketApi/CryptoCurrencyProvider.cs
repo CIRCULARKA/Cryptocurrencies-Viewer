@@ -8,7 +8,7 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 {
 	public class CryptoCurrencyProvider : ICurrencyProvider<CryptoCurrency>
 	{
-		private CryptoCurrencyDataDeserializer _deserializer;
+		private CryptoCurrencyDeserializer _deserializer;
 
 		private UriBuilder _endpoint;
 
@@ -18,7 +18,7 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 
 		public CryptoCurrencyProvider(string endpoint,
 			IDictionary<string, string> parameters,
-			CryptoCurrencyDataDeserializer deserializer,
+			CryptoCurrencyDeserializer deserializer,
 			ApiProvider apiProvider
 		)
 		{
