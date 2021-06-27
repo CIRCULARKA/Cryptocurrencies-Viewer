@@ -6,6 +6,6 @@ namespace CryptocurrenciesViewer.Models
 	{
 		void RefreshData();
 
-		IEnumerable<CryptoCurrency> AllCurrencies { get; set; }
+		IEnumerable<CryptoCurrency> AllCurrency { get; }
 	}
 }
