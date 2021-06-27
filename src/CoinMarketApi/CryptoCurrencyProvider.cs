@@ -30,7 +30,7 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 			SetQueryForEndpoint(parameters);
 			ConfigureWebClient();
 
-			Request = _endpoint.ToString();
+			Request = _endpoint.Uri.AbsoluteUri;
 		}
 
 		public string Request { get; }
