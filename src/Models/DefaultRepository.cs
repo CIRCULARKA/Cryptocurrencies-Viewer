@@ -21,11 +21,13 @@ namespace CryptocurrenciesViewer.Models
 		public void RefreshData()
 		{
 			if (_context.Currencies.Count() > 0)
-			{
 				_context.Currencies.UpdateRange(
 					_provider.GetCurrencyFromRemoteServer()
 				);
-			}
+			else
+				_context.Currencies.AddRange(
+					_provider.GetCurrencyFromRemoteServer()
+				);
 		}
 
 		public IEnumerable<CryptoCurrency> AllCurrency =>
