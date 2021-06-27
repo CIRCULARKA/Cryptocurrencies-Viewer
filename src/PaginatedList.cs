@@ -6,10 +6,10 @@ namespace CryptocurrenciesViewer
 {
 	public class PaginatedList<T> : List<T>
 	{
-		public PaginatedList(List<T> list, int pageIndex, int pageSize)
+		public PaginatedList(List<T> list, int totalCount, int pageIndex, int pageSize)
 		{
 			CurrentPageIndex = pageIndex;
-			TotalPages = (int)Math.Ceiling(list.Count / (double)pageSize);
+			TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
 
 			AddRange(list);
 		}
@@ -27,6 +27,7 @@ namespace CryptocurrenciesViewer
 		public static PaginatedList<T> Create(IQueryable<T> source, int pageIndex, int pageSize) =>
 			new PaginatedList<T>(
 				source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList(),
+				source.Count(),
 				pageIndex,
 				pageSize
 			);
