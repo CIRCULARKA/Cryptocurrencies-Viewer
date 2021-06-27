@@ -4,7 +4,7 @@ using CryptocurrenciesViewer.CoinMarketApi;
 
 namespace CryptocurrenciesViewer.Models.Factories
 {
-	public abstract class RepositoryFactory
+	public class RepositoryFactory
 	{
 		private string _currencyEndpoint =
 			"https://pro.coinmarketcap.com/api/v1/cryptocurrency/listings/latest";
