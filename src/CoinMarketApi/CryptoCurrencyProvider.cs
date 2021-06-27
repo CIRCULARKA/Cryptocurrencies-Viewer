@@ -22,8 +22,10 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 			IApiProvider apiProvider
 		)
 		{
+			_client = new WebClient();
 			_deserializer = deserializer;
 			_endpoint = new UriBuilder(endpoint);
+			_apiProvider = apiProvider;
 
 			SetQueryForEndpoint(parameters);
 			ConfigureWebClient();
