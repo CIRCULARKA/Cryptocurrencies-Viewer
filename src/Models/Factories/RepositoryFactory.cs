@@ -17,7 +17,6 @@ namespace CryptocurrenciesViewer.Models.Factories
 				new CryptoCurrencyProvider(
 					_currencyEndpoint,
 					new Dictionary<string, string> {
-						{ "limit", "10" }
 					},
 					new CryptoCurrencyDeserializer(),
 					new ApiProvider(
