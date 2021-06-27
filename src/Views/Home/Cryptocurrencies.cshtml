@@ -16,17 +16,25 @@
 		<tbody>
 			@foreach (var currency in Model)
 			{
-				<tr>
-					<th>
-						<img src="https://s2.coinmarketcap.com/static/img/coins/32x32/@(currency.CurrencyID).png">
-					</th>
-					<th>@currency.Name</th>
-					<th>@currency.Symbol</th>
-					<th>@currency.Price</th>
-					<th>@currency.Last1HourDynamics</th>
-					<th>@currency.Last24HoursDynamics</th>
-					<th>@currency.MarketCapitalization</th>
-				</tr>
+					<tr>
+						<th>
+							<img src="https://s2.coinmarketcap.com/static/img/coins/32x32/@(currency.CurrencyID).png">
+						</th>
+						<th>@currency.Name</th>
+						<th>@currency.Symbol</th>
+						<th>@currency.Price</th>
+						<th>
+							<p class="@(currency.Last1HourDynamics < 0 ? "text-danger" : "text-success")">
+								@(currency.Last1HourDynamics.ToString("F2") + "%")
+							</p>
+						</th>
+						<th>
+							<p class="@(currency.Last24HoursDynamics < 0 ? "text-danger" : "text-success")">
+								@(currency.Last24HoursDynamics.ToString("F2") + "%")
+							</p>
+						</th>
+						<th>@currency.MarketCapitalization</th>
+					</tr>
 			}
 		</tbody>
 	</table>
