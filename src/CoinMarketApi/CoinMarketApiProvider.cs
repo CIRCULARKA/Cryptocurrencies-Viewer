@@ -9,6 +9,9 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 		public CoinMarketApiProvider(StreamReader reader) =>
 			_reader = reader;
 
+		/// <summary>
+		/// Returns empty string if reader can not find target file with api
+		/// </summary>
 		public string GetApiKey()
 		{
 			try { return _reader.ReadLine(); }
