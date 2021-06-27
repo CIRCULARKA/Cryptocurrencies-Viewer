@@ -19,7 +19,7 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 
 					var currency = new CryptoCurrency();
 
-					currency.ID = (int)node["id"];
+					currency.CurrencyID = (int)node["id"];
 					currency.Name = (string)node["name"];
 					currency.Symbol = (string)node["symbol"];
 					currency.MarketCapitalization = (decimal)usdNode["market_cap"];
