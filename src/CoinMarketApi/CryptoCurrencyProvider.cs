@@ -6,7 +6,7 @@ using CryptocurrenciesViewer.Models;
 
 namespace CryptocurrenciesViewer.CoinMarketApi
 {
-	public class CryptoCurrencyProvider
+	public class CryptoCurrencyProvider : ICurrencyProvider<CryptoCurrency>
 	{
 		private CryptoCurrencyDataDeserializer _deserializer;
 
