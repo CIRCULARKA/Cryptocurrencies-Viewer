@@ -9,6 +9,7 @@ namespace CryptocurrenciesViewer.Models
 		protected override void OnModelCreating(ModelBuilder bulider)
 		{
 			bulider.Entity<CryptoCurrency>().HasKey(cc => cc.ID);
+			bulider.Entity<CryptoCurrency>().Property(cc => cc.ID).UseIdentityColumn();
 		}
 	}
 }
