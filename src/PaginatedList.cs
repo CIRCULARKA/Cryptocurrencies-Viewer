@@ -24,7 +24,7 @@ namespace CryptocurrenciesViewer
 		public bool IsNextPageAvailable =>
 			CurrentPageIndex < TotalPages;
 
-		public PaginatedList<T> Create(IQueryable<T> source, int pageIndex, int pageSize) =>
+		public static PaginatedList<T> Create(IQueryable<T> source, int pageIndex, int pageSize) =>
 			new PaginatedList<T>(
 				source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList(),
 				pageIndex,
