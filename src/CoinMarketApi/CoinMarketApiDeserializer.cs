@@ -17,15 +17,15 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 				{
 					var usdNode = node["quote"]["USD"];
 
-					var currency = new CryptoCurrency() {
-						ID = (int)node["id"],
-						Name = (string)node["name"],
-						Symbol = (string)node["symbol"],
-						MarketCapitalization = (decimal)usdNode["market_cup"],
-						Price = (decimal)usdNode["price"],
-						Last1HourDynamics = (decimal)usdNode["percent_change_1h"],
-						Last24HoursDynamics = (decimal)usdNode["percent_change_24h"]
-					};
+					var currency = new CryptoCurrency();
+
+					currency.ID = (int)node["id"];
+					currency.Name = (string)node["name"];
+					currency.Symbol = (string)node["symbol"];
+					currency.MarketCapitalization = (decimal)usdNode["market_cap"];
+					currency.Price = (decimal)usdNode["price"];
+					currency.Last1HourDynamics = (decimal)usdNode["percent_change_1h"];
+					currency.Last24HoursDynamics = (decimal)usdNode["percent_change_24h"];
 
 					result.Add(currency);
 				}
@@ -38,7 +38,6 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 					"https://pro.coinmarketcap.com/api/v1#operation/getV1CryptocurrencyListingsLatest"
 				);
 			}
-
 			return result;
 		}
 	}
