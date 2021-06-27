@@ -1,10 +1,13 @@
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace CryptocurrenciesViewer.Models
 {
 	public class CryptoCurrency : IModel
 	{
 		public int ID { get; set; }
+
+		public int CurrencyID { get; set; }
 
 		public string Name { get; set; }
 
