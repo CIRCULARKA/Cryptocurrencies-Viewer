@@ -25,7 +25,7 @@ namespace CryptocurrenciesViewer.Models.Factories
 							Directory.
 								GetParent(
 									Directory.GetCurrentDirectory()
-								).Parent.Parent.FullName
+								).Parent.Parent.FullName + "\\"
 						)
 					)
 				)
