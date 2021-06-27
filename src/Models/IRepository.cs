@@ -7,5 +7,7 @@ namespace CryptocurrenciesViewer.Models
 		void RefreshData();
 
 		IEnumerable<CryptoCurrency> AllCurrency { get; }
+
+		void SaveChanges();
 	}
 }

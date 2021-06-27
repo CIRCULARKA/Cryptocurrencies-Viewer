@@ -32,5 +32,8 @@ namespace CryptocurrenciesViewer.Models
 
 		public IEnumerable<CryptoCurrency> AllCurrency =>
 			_context.Currencies.ToList();
+
+		public void SaveChanges() =>
+			_context.SaveChanges();
 	}
 }
