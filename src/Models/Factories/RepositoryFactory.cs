@@ -11,7 +11,7 @@ namespace CryptocurrenciesViewer.Models.Factories
 
 		public RepositoryFactory() { }
 
-		public IRepository CreateDefaultRepository() =>
+		public DefaultRepository CreateDefaultRepository() =>
 			new DefaultRepository(
 				new DefaultDbContext(),
 				new CryptoCurrencyProvider(
