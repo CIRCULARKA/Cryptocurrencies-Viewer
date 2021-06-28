@@ -28,7 +28,7 @@ namespace CryptocurrenciesViewer.Models
 
 		private void LoadCurrencyFromServer()
 		{
-			if (_context.Currencies.Count()> 0)
+			if (_context.Currencies.Count() == 0)
 			{
 				_context.Currencies.AddRange(
 					_provider.GetCurrencyFromRemoteServer()
