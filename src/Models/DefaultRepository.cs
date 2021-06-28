@@ -28,11 +28,14 @@ namespace CryptocurrenciesViewer.Models
 
 		private void LoadCurrencyFromServer()
 		{
-			_context.Currencies.AddRange(
-				_provider.GetCurrencyFromRemoteServer()
-			);
+			if (_context.Currencies.Count()> 0)
+			{
+				_context.Currencies.AddRange(
+					_provider.GetCurrencyFromRemoteServer()
+				);
 
-			SaveChanges();
+				SaveChanges();
+			}
 		}
 	}
 }
