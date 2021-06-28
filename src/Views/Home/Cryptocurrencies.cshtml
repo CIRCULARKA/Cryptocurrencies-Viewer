@@ -1,5 +1,14 @@
-@model IEnumerable<CryptoCurrency>
+@model PaginatedList<CryptoCurrency>
 
+<div class="row">
+	<div class="col-6">
+		<a class="btn btn-secondary d-inline @(!Model.IsPrevPageAvailable ? "disabled" : "")"
+			href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex - 1)">Previous</a>
+		<p class="d-inline h-100">@Model.CurrentPageIndex / @Model.TotalPages</p>
+		<a href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex + 1)"
+			class="btn btn-secondary d-inline @(!Model.IsNextPageAvailable ? "disabled" : "")">Next</a>
+	</div>
+</div>
 <div class="col-12">
 	<table class="table">
 		<thead>
@@ -16,25 +25,25 @@
 		<tbody>
 			@foreach (var currency in Model)
 			{
-					<tr>
-						<th>
-							<img src="https://s2.coinmarketcap.com/static/img/coins/32x32/@(currency.CurrencyID).png">
-						</th>
-						<th>@currency.Name</th>
-						<th>@currency.Symbol</th>
-						<th>@currency.Price</th>
-						<th>
-							<p class="@(currency.Last1HourDynamics < 0 ? "text-danger" : "text-success")">
-								@(currency.Last1HourDynamics.ToString("F2") + "%")
-							</p>
-						</th>
-						<th>
-							<p class="@(currency.Last24HoursDynamics < 0 ? "text-danger" : "text-success")">
-								@(currency.Last24HoursDynamics.ToString("F2") + "%")
-							</p>
-						</th>
-						<th>@currency.MarketCapitalization</th>
-					</tr>
+				<tr>
+					<th>
+						<img src="https://s2.coinmarketcap.com/static/img/coins/32x32/@(currency.CurrencyID).png">
+					</th>
+					<th>@currency.Name</th>
+					<th>@currency.Symbol</th>
+					<th>@currency.Price</th>
+					<th>
+						<p class="@(currency.Last1HourDynamics < 0 ? "text-danger" : "text-success")">
+							@(currency.Last1HourDynamics.ToString("F2") + "%")
+						</p>
+					</th>
+					<th>
+						<p class="@(currency.Last24HoursDynamics < 0 ? "text-danger" : "text-success")">
+							@(currency.Last24HoursDynamics.ToString("F2") + "%")
+						</p>
+					</th>
+					<th>@currency.MarketCapitalization</th>
+				</tr>
 			}
 		</tbody>
 	</table>
