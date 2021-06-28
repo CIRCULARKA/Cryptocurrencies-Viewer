@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using CryptocurrenciesViewer.Models;
+using CryptocurrenciesViewer.Models.Factories;
 
 namespace CryptocurrenciesViewer
 {
@@ -9,6 +11,11 @@ namespace CryptocurrenciesViewer
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+
+			services.AddSingleton<IRepository, DefaultRepository>(
+				services => new RepositoryFactory().
+					CreateDefaultRepository()
+			);
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
