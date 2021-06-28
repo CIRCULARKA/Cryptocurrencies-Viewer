@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 
 namespace CryptocurrenciesViewer.Models
@@ -14,13 +15,12 @@ namespace CryptocurrenciesViewer.Models
 
 		public decimal Price { get; set; }
 
-		[JsonProperty(PropertyName = "market_cap")]
 		public decimal MarketCapitalization { get; set; }
 
-		[JsonProperty(PropertyName = "percent_change_24h")]
 		public decimal Last24HoursDynamics { get; set; }
 
-		[JsonProperty(PropertyName = "percent_change_1h")]
 		public decimal Last1HourDynamics { get; set; }
+
+		public DateTime LastTimeUpdated { get; set; }
 	}
 }
