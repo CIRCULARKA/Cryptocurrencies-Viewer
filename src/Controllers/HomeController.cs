@@ -1,6 +1,6 @@
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using CryptocurrenciesViewer.Models;
-using CryptocurrenciesViewer.Models.Factories;
 
 namespace CryptocurrenciesViewer
 {
@@ -8,21 +8,21 @@ namespace CryptocurrenciesViewer
 	{
 		private IRepository _repository;
 
-		public HomeController()
+		private int _pageSize = 10;
+
+		public HomeController(IRepository repo)
 		{
-			_repository = new RepositoryFactory().
-				CreateDefaultRepository();
+			_repository = repo;
 		}
 
-		public IActionResult GetCryptocurrenciesList()
-		{
-			_repository.RefreshData();
-			_repository.SaveChanges();
-
-			return View(
+		public IActionResult GetCryptocurrenciesList(int? pageIndex) =>
+			View(
 				viewName: "Cryptocurrencies",
-				model: _repository.AllCurrency
+				model: PaginatedList<CryptoCurrency>.Create(
+					source: _repository.AllCurrency.AsQueryable(),
+					pageIndex: pageIndex ?? 1,
+					pageSize: _pageSize
+				)
 			);
-		}
 	}
 }
