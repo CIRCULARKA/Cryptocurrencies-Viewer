@@ -20,6 +20,7 @@
 				<th scope="col">Last 1h dynamics</th>
 				<th scope="col">Last 24h dynamics</th>
 				<th scope="col">Capitalization</th>
+				<th scope="col">Last time updated</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,7 +32,7 @@
 					</th>
 					<th>@currency.Name</th>
 					<th>@currency.Symbol</th>
-					<th>@currency.Price</th>
+					<th>@string.Format("${0:0.000}", currency.Price)</th>
 					<th>
 						<p class="@(currency.Last1HourDynamics < 0 ? "text-danger" : "text-success")">
 							@(currency.Last1HourDynamics.ToString("F2") + "%")
@@ -42,7 +43,8 @@
 							@(currency.Last24HoursDynamics.ToString("F2") + "%")
 						</p>
 					</th>
-					<th>@currency.MarketCapitalization</th>
+					<th>@("$" + currency.MarketCapitalization)</th>
+					<th>@currency.LastTimeUpdated.ToString("dd MMMM YYYY h:mm tt", new CultureInfo("en-US"))</th>
 				</tr>
 			}
 		</tbody>
