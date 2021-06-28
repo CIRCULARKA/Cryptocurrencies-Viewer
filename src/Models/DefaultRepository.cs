@@ -16,18 +16,8 @@ namespace CryptocurrenciesViewer.Models
 		{
 			_context = context;
 			_provider = provider;
-		}
 
-		public void RefreshData()
-		{
-			if (_context.Currencies.Count() > 0)
-				_context.Currencies.UpdateRange(
-					_provider.GetCurrencyFromRemoteServer()
-				);
-			else
-				_context.Currencies.AddRange(
-					_provider.GetCurrencyFromRemoteServer()
-				);
+			LoadCurrencyFromServer();
 		}
 
 		public IEnumerable<CryptoCurrency> AllCurrency =>
@@ -35,5 +25,14 @@ namespace CryptocurrenciesViewer.Models
 
 		public void SaveChanges() =>
 			_context.SaveChanges();
+
+		private void LoadCurrencyFromServer()
+		{
+			_context.Currencies.AddRange(
+				_provider.GetCurrencyFromRemoteServer()
+			);
+
+			SaveChanges();
+		}
 	}
 }
