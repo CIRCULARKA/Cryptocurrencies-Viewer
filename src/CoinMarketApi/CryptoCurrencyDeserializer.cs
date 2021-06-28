@@ -26,6 +26,7 @@ namespace CryptocurrenciesViewer.CoinMarketApi
 					currency.Price = (decimal)usdNode["price"];
 					currency.Last1HourDynamics = (decimal)usdNode["percent_change_1h"];
 					currency.Last24HoursDynamics = (decimal)usdNode["percent_change_24h"];
+					currency.LastTimeUpdated = (DateTime)usdNode["last_updated"];
 
 					result.Add(currency);
 				}
