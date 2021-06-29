@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using CryptocurrenciesViewer.Models;
 using CryptocurrenciesViewer.Models.Factories;
@@ -12,6 +13,10 @@ namespace CryptocurrenciesViewer
 		{
 			services.AddControllersWithViews();
 
+			services.AddDbContext<UsersDbContext>();
+			services.AddIdentity<User, IdentityRole>().
+				AddEntityFrameworkStores<UsersDbContext>();
+
 			services.AddSingleton<IRepository, DefaultRepository>(
 				services => new RepositoryFactory().
 					CreateDefaultRepository()
@@ -23,6 +28,10 @@ namespace CryptocurrenciesViewer
 			app.UseDeveloperExceptionPage();
 
 			app.UseRouting();
+
+			app.UseAuthentication();
+			app.UseAuthorization();
+
 			app.UseEndpoints(
 				endpoints =>
 					endpoints.MapControllerRoute(
