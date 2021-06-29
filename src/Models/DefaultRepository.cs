@@ -1,8 +1,8 @@
 using System.Linq;
 using System.Collections.Generic;
-using CryptocurrenciesViewer.CoinMarketApi;
+using CurrencyViewer.CoinMarketApi;
 
-namespace CryptocurrenciesViewer.Models
+namespace CurrencyViewer.Models
 {
 	public class DefaultRepository : IRepository
 	{

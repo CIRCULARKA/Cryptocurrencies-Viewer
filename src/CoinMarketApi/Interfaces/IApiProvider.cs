@@ -1,4 +1,4 @@
-namespace CryptocurrenciesViewer.CoinMarketApi
+namespace CurrencyViewer.CoinMarketApi
 {
 	public interface IApiProvider
 	{

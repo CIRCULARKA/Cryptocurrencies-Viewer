@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CryptocurrenciesViewer.Models
+namespace CurrencyViewer.Models
 {
 	public interface IRepository
 	{

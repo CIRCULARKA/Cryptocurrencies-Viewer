@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using CryptocurrenciesViewer.Models;
+using CurrencyViewer.Models;
 using Newtonsoft.Json.Linq;
 
-namespace CryptocurrenciesViewer.CoinMarketApi
+namespace CurrencyViewer.CoinMarketApi
 {
 	public class CryptoCurrencyDeserializer : ICurrencyDeserializer<CryptoCurrency>
 	{

@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace CryptocurrenciesViewer.CoinMarketApi
+namespace CurrencyViewer.CoinMarketApi
 {
 	public class ApiProvider : IApiProvider
 	{

@@ -2,9 +2,9 @@ using System;
 using System.Net;
 using System.Web;
 using System.Collections.Generic;
-using CryptocurrenciesViewer.Models;
+using CurrencyViewer.Models;
 
-namespace CryptocurrenciesViewer.CoinMarketApi
+namespace CurrencyViewer.CoinMarketApi
 {
 	public class CryptoCurrencyProvider : ICurrencyProvider<CryptoCurrency>
 	{
