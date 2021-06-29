@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using CryptocurrenciesViewer.Models;
+using CurrencyViewer.Models;
 
-namespace CryptocurrenciesViewer.Controllers
+namespace CurrencyViewer.Controllers
 {
 	public class IdentityController : Controller
 	{

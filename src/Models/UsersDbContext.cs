@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace CryptocurrenciesViewer.Models
+namespace CurrencyViewer.Models
 {
 	public class UsersDbContext : IdentityDbContext<User>
 	{
