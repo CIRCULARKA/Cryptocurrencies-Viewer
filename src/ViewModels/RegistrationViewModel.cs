@@ -4,18 +4,15 @@ namespace CurrencyViewer.ViewModels
 {
 	public class RegistrationViewModel
 	{
-		[Required]
-		[Display(Name = "Email")]
+		[Required(ErrorMessage = "Email is required")]
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
 
-		[Required]
-		[Display(Name = "Password")]
+		[Required(ErrorMessage = "Password is required")]
 		[DataType(DataType.Password)]
 		public string Password { get; set; }
 
-		[Required]
-		[Display(Name = "Confirm password")]
+		[Required(ErrorMessage = "Password confirmation is required")]
 		[Compare("Password", ErrorMessage = "Password mismatch")]
 		[DataType(DataType.Password)]
 		public string ConfirmedPassword { get; set; }
