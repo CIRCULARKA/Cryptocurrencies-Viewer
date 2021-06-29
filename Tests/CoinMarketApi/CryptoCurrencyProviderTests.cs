@@ -2,10 +2,10 @@ using Moq;
 using Xunit;
 using System.Linq;
 using System.Collections.Generic;
-using CryptocurrenciesViewer.CoinMarketApi;
-using CryptocurrenciesViewer.Models;
+using CurrencyViewer.CoinMarketApi;
+using CurrencyViewer.Models;
 
-namespace CryptocurrenciesViewer.Tests
+namespace CurrencyViewer.Tests
 {
 	public class CryptoCurrencyProviderTests
 	{

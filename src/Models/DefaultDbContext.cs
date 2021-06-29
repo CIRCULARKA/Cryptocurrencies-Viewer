@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace CryptocurrenciesViewer.Models
+namespace CurrencyViewer.Models
 {
 	public class DefaultDbContext : DbContextBase
 	{

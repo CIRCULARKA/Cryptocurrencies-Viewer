@@ -1,8 +1,8 @@
 using Xunit;
 using System.IO;
-using CryptocurrenciesViewer.CoinMarketApi;
+using CurrencyViewer.CoinMarketApi;
 
-namespace CryptocurrenciesViewer.Tests
+namespace CurrencyViewer.Tests
 {
 	public class ApiProviderTests
 	{

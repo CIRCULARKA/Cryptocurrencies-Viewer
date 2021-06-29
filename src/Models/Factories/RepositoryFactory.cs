@@ -1,8 +1,8 @@
 using System.IO;
 using System.Collections.Generic;
-using CryptocurrenciesViewer.CoinMarketApi;
+using CurrencyViewer.CoinMarketApi;
 
-namespace CryptocurrenciesViewer.Models.Factories
+namespace CurrencyViewer.Models.Factories
 {
 	public class RepositoryFactory
 	{

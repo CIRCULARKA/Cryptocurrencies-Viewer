@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CryptocurrenciesViewer.CoinMarketApi
+namespace CurrencyViewer.CoinMarketApi
 {
 	public interface ICurrencyDeserializer<T>
 	{

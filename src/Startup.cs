@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using CryptocurrenciesViewer.Models;
-using CryptocurrenciesViewer.Models.Factories;
+using CurrencyViewer.Models;
+using CurrencyViewer.Models.Factories;
 
-namespace CryptocurrenciesViewer
+namespace CurrencyViewer
 {
 	public class Startup
 	{

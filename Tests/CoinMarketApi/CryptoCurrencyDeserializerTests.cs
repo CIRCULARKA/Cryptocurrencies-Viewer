@@ -1,8 +1,8 @@
 using Xunit;
 using System.Linq;
 using System.Collections.Generic;
-using CryptocurrenciesViewer.Models;
-using CryptocurrenciesViewer.CoinMarketApi;
+using CurrencyViewer.Models;
+using CurrencyViewer.CoinMarketApi;
 
 public class CryptoCurrencyDeserializerTests
 {

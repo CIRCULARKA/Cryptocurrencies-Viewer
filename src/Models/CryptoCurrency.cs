@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace CryptocurrenciesViewer.Models
+namespace CurrencyViewer.Models
 {
 	public class CryptoCurrency : IModel
 	{

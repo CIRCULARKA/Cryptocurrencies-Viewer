@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace CryptocurrenciesViewer
+namespace CurrencyViewer
 {
 	public class PaginatedList<T> : List<T>
 	{

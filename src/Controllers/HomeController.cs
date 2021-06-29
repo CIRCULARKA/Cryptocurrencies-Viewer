@@ -1,8 +1,8 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using CryptocurrenciesViewer.Models;
+using CurrencyViewer.Models;
 
-namespace CryptocurrenciesViewer.Controllers
+namespace CurrencyViewer.Controllers
 {
 	public class HomeController : Controller
 	{

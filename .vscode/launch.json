@@ -6,7 +6,7 @@
 			"type": "coreclr",
 			"request": "launch",
 			"preLaunchTask": "Build",
-			"program": "${workspaceFolder}/src/bin/Debug/net5.0/CryptocurrenciesViewer.dll",
+			"program": "${workspaceFolder}/src/bin/Debug/net5.0/CurrencyViewer.dll",
 			"args": [],
 			"cwd": "${workspaceFolder}",
 			"stopAtEntry": false,

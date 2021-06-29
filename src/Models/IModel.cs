@@ -1,4 +1,4 @@
-namespace CryptocurrenciesViewer.Models
+namespace CurrencyViewer.Models
 {
 	public interface IModel { }
 }

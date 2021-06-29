@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\CryptocurrenciesViewer.csproj" />
+    <ProjectReference Include="..\src\CurrencyViewer.csproj" />
   </ItemGroup>
 
 </Project>
