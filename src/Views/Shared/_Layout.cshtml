@@ -22,7 +22,9 @@
 				@if(User.Identity.IsAuthenticated)
 				{
 					<p class="text-cetner m-0 mt-1 d-flex mx-3">@User.Identity.Name</p>
-					<a class="text-center d-flex btn btn-secondary">Logout</a>
+					<form asp-action="Logout" asp-controller="Identity" method="post">
+						<input type="submit" class="d-flex btn btn-secondary" value="Logout">
+					</form>
 				}
 				else
 				{
