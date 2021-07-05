@@ -10,7 +10,7 @@ namespace CurrencyViewer.Models
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder builder) =>
-			builder.UseSqlServer("Server=(local);Database=CryptoCurrenciesDB;Trusted_Connection=True");
+			builder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=CryptoCurrenciesDB;Trusted_Connection=True");
 
 	}
 }
