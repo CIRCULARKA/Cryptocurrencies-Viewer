@@ -29,15 +29,20 @@ namespace CurrencyViewer.Controllers
 			if (!ModelState.IsValid) return View("Registration", model);
 
 			var newUser = new User {
-				Email = model.Email
+				Email = model.Email,
+				UserName = model.Email
 			};
 
 			var registrationResult = await _usersManager.
 				CreateAsync(newUser, model.Password);
 
 			if (!registrationResult.Succeeded)
+			{
 				foreach (var error in registrationResult.Errors)
 					ModelState.AddModelError(string.Empty, error.Description);
+
+				return View("Registration", model);
+			}
 
 			await _signInManager.SignInAsync(newUser, isPersistent: true);
 
