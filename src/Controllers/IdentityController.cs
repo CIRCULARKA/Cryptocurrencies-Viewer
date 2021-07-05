@@ -76,6 +76,7 @@ namespace CurrencyViewer.Controllers
 			}
 
 			return RedirectToAction(
+				controllerName: "Home",
 				actionName: "GetCryptocurrenciesPage"
 			);
 		}
