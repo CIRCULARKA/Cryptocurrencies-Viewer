@@ -21,7 +21,7 @@ namespace CurrencyViewer.Controllers
 				return View(
 					viewName: "Cryptocurrencies",
 					model: PaginatedList<CryptoCurrency>.Create(
-						source: _repository.AllCurrency.AsQueryable(),
+						source: _repository.AllCurrency.OrderByDescending(c => c.MarketCapitalization).AsQueryable(),
 						pageIndex: pageIndex ?? 1,
 						pageSize: _pageSize
 					)
