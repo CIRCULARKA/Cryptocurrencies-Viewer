@@ -65,7 +65,7 @@ namespace CurrencyViewer.Controllers
 				PasswordSignInAsync(
 					model.Email,
 					model.Password,
-					isPersistent: true,
+					isPersistent: false,
 					lockoutOnFailure: false
 				);
 
