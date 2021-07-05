@@ -52,7 +52,7 @@ namespace CurrencyViewer.Controllers
 			);
 		}
 
-		public IActionResult GetAuthorizationView(string returnUrl = null) =>
+		public IActionResult GetAuthorizationView() =>
 			View("Authorization");
 
 		[HttpPost]
@@ -72,13 +72,20 @@ namespace CurrencyViewer.Controllers
 			if (!authResult.Succeeded)
 			{
 				ModelState.AddModelError("", "Login or password is incorrect");
-				return View(nameof(GetAuthorizationView), model);
+				return View("Authorization", model);
 			}
 
 			return RedirectToAction(
 				controllerName: "Home",
-				actionName: "GetCryptocurrenciesPage"
+				actionName: "GetCryptocurrenciesList"
 			);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Logout()
+		{
+			await _signInManager.SignOutAsync();
+			return RedirectToAction(nameof(GetAuthorizationView));
 		}
 	}
 }
