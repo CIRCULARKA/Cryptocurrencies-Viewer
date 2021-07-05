@@ -1,0 +1,21 @@
+@model CurrencyViewer.ViewModels.AuthorizationViewModel
+
+<div class="row">
+	<div class="col-12">
+		<div>
+			<h1>Log In before continuing</h1>
+			<form class="form" asp-controller="Identity" asp-action="AuthorizeUser">
+				<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+				<div class="mb-3">
+					<input class="form-control" asp-for="Email" placeholder="Email" />
+					<span class="text-danger" asp-validation-for="Email"></span>
+				</div>
+				<div class="mb-3">
+					<input class="form-control" asp-for="Password" placeholder="Password" />
+					<span class="text-danger" asp-validation-for="Password"></span>
+				</div>
+				<input class="btn btn-primary mt-3" type="submit" value="Log In" />
+			</form>
+		</div>
+	</div>
+</div>
