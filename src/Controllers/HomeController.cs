@@ -15,14 +15,22 @@ namespace CurrencyViewer.Controllers
 			_repository = repo;
 		}
 
-		public IActionResult GetCryptocurrenciesList(int? pageIndex) =>
-			View(
-				viewName: "Cryptocurrencies",
-				model: PaginatedList<CryptoCurrency>.Create(
-					source: _repository.AllCurrency.AsQueryable(),
-					pageIndex: pageIndex ?? 1,
-					pageSize: _pageSize
-				)
-			);
+		public IActionResult GetCryptocurrenciesList(int? pageIndex)
+		{
+			if (User.Identity.IsAuthenticated)
+				return View(
+					viewName: "Cryptocurrencies",
+					model: PaginatedList<CryptoCurrency>.Create(
+						source: _repository.AllCurrency.AsQueryable(),
+						pageIndex: pageIndex ?? 1,
+						pageSize: _pageSize
+					)
+				);
+			else
+				return RedirectToAction(
+					controllerName: "Identity",
+					actionName: "GetAuthorizationView"
+				);
+		}
 	}
 }
