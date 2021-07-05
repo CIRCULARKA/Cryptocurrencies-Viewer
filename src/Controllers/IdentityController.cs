@@ -52,7 +52,32 @@ namespace CurrencyViewer.Controllers
 			);
 		}
 
-		public IActionResult GetAuthorizationView() =>
+		public IActionResult GetAuthorizationView(string returnUrl = null) =>
 			View("Authorization");
+
+		[HttpPost]
+		public async Task<IActionResult> AuthorizeUser(AuthorizationViewModel model)
+		{
+			if (!ModelState.IsValid)
+				return View(nameof(GetAuthorizationView), model);
+
+			var authResult = await _signInManager.
+				PasswordSignInAsync(
+					model.Email,
+					model.Password,
+					isPersistent: true,
+					lockoutOnFailure: false
+				);
+
+			if (!authResult.Succeeded)
+			{
+				ModelState.AddModelError("", "Login or password is incorrect");
+				return View(nameof(GetAuthorizationView), model);
+			}
+
+			return RedirectToAction(
+				actionName: "GetCryptocurrenciesPage"
+			);
+		}
 	}
 }
