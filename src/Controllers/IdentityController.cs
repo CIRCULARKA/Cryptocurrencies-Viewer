@@ -51,5 +51,8 @@ namespace CurrencyViewer.Controllers
 				controllerName: "Home"
 			);
 		}
+
+		public IActionResult GetAuthorizationView() =>
+			View("Authorization");
 	}
 }
