@@ -39,7 +39,8 @@
 			"label": "Run Tests",
 			"command": "dotnet",
 			"args": [
-				"test"
+				"test",
+				"Tests"
 			],
 			"group": {
 				"kind": "build",
