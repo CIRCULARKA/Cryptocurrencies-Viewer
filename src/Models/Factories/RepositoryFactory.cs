@@ -21,9 +21,12 @@ namespace CurrencyViewer.Models.Factories
 					new CryptoCurrencyDeserializer(),
 					new ApiProvider(
 						new StreamReader(
-							Directory.
-								GetCurrentDirectory() +
-								"\\src\\api.txt"
+							new FileStream(
+								Directory.
+									GetCurrentDirectory() +
+									"\\src\\api.txt",
+								FileMode.OpenOrCreate
+							)
 						)
 					)
 				)

@@ -32,5 +32,15 @@ namespace CurrencyViewer.Controllers
 					actionName: "GetAuthorizationView"
 				);
 		}
+
+		public IActionResult RefreshCurrencyList(int? pageIndex)
+		{
+			_repository.RefreshCurrencyInfo();
+
+			return RedirectToAction(
+				actionName: nameof(GetCryptocurrenciesList),
+				new { pageIndex = pageIndex }
+			);
+		}
 	}
 }
