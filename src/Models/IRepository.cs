@@ -6,6 +6,8 @@ namespace CurrencyViewer.Models
 	{
 		IEnumerable<CryptoCurrency> AllCurrency { get; }
 
+		void RefreshCurrencyInfo();
+
 		void SaveChanges();
 	}
 }
