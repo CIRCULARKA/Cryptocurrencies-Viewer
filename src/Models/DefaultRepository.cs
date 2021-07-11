@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using CurrencyViewer.CoinMarketApi;
@@ -34,9 +35,26 @@ namespace CurrencyViewer.Models
 		{
 			if (_context.Currencies.Count() == 0) return;
 
-			_context.UpdateRange(
-				_provider.GetCurrencyFromRemoteServer()
-			);
+			var newData = _provider.GetCurrencyFromRemoteServer();
+
+			foreach (var currency in newData)
+			{
+				try
+				{
+					var target = _context.
+						Currencies.
+							First(c => c.CurrencyID == currency.CurrencyID);
+
+					target.Price = currency.Price;
+					target.MarketCapitalization = currency.MarketCapitalization;
+					target.Last1HourDynamics = currency.Last1HourDynamics;
+					target.Last24HoursDynamics = currency.Last24HoursDynamics;
+					target.LastTimeUpdated = currency.LastTimeUpdated;
+
+					_context.Currencies.Update(target);
+				}
+				catch (InvalidOperationException) { }
+			}
 
 			SaveChanges();
 		}
