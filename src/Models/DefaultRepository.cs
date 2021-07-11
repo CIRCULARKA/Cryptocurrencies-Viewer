@@ -26,6 +26,21 @@ namespace CurrencyViewer.Models
 		public void SaveChanges() =>
 			_context.SaveChanges();
 
+		/// <summary>
+		/// Pulls data from API to database
+		///	Takes no effect if DB is empty
+		/// </summary>
+		public void RefreshCurrencyInfo()
+		{
+			if (_context.Currencies.Count() == 0) return;
+
+			_context.UpdateRange(
+				_provider.GetCurrencyFromRemoteServer()
+			);
+
+			SaveChanges();
+		}
+
 		private void LoadCurrencyFromServer()
 		{
 			if (_context.Currencies.Count() == 0)
