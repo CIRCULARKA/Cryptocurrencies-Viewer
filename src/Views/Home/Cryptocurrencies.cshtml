@@ -8,6 +8,7 @@
 		<a href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex + 1)"
 			class="btn btn-secondary d-inline @(!Model.IsNextPageAvailable ? "disabled" : "")">Next</a>
 		<a class="mx-3 link-dark" asp-action="RefreshCurrencyList" asp-controller="Home"
+			asp-route-pageIndex="@Model.CurrentPageIndex"
 			style="text-decorations: none;">
 			<i class="fas fa-sync"></i>
 		</a>
