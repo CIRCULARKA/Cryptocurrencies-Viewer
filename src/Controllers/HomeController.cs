@@ -33,23 +33,13 @@ namespace CurrencyViewer.Controllers
 				);
 		}
 
-		public IActionResult RefreshCurrencyList()
+		public IActionResult RefreshCurrencyList(int? pageIndex)
 		{
 			_repository.RefreshCurrencyInfo();
 
-			int pageIndex;
-			int.TryParse(Request.Query["pageIndex"], out pageIndex);
-
-			return View(
-				viewName: "Cryptocurrencies",
-				model: PaginatedList<CryptoCurrency>.Create(
-					source: _repository.
-						AllCurrency.
-							OrderByDescending(c => c.MarketCapitalization).
-								AsQueryable(),
-					pageIndex: pageIndex,
-					pageSize: _pageSize
-				)
+			return RedirectToAction(
+				actionName: nameof(GetCryptocurrenciesList),
+				new { pageIndex = pageIndex }
 			);
 		}
 	}
