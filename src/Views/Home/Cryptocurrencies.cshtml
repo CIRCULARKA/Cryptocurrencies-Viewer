@@ -9,7 +9,7 @@
 else
 {
 	<div class="row">
-		<div class="col-6">
+		<div class="col-12">
 			<a class="btn btn-secondary d-inline @(!Model.IsPrevPageAvailable ? "disabled" : "")"
 				href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex - 1)">Previous</a>
 			<p class="d-inline h-100">@Model.CurrentPageIndex / @Model.TotalPages</p>
@@ -20,7 +20,7 @@ else
 				style="text-decorations: none;">
 				<i class="fas fa-sync"></i>
 			</a>
-			<p class="text-danger mx-3">@ViewData["errorMessage"]</p>
+			<p class="text-danger mx-3 d-inline">@ViewData["messageToUser"]</p>
 		</div>
 	</div>
 	<div class="col-12">

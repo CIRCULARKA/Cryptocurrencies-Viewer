@@ -15,9 +15,15 @@ namespace CurrencyViewer.Controllers
 			_repository = repo;
 		}
 
-		public IActionResult GetCryptocurrenciesList(int? pageIndex)
+		public IActionResult GetCryptocurrenciesList(int? pageIndex, string messageToUser)
 		{
 			if (User.Identity.IsAuthenticated)
+			{
+				try { _repository.LoadCurrencyFromServer(); }
+				catch (ApiException) { }
+
+				ViewData["messageToUser"] = messageToUser;
+
 				return View(
 					viewName: "Cryptocurrencies",
 					model: PaginatedList<CryptoCurrency>.Create(
@@ -26,6 +32,7 @@ namespace CurrencyViewer.Controllers
 						pageSize: _pageSize
 					)
 				);
+			}
 			else
 				return RedirectToAction(
 					controllerName: "Identity",
@@ -35,11 +42,20 @@ namespace CurrencyViewer.Controllers
 
 		public IActionResult RefreshCurrencyList(int? pageIndex)
 		{
-			_repository.RefreshCurrencyInfo();
+			string message = "";
+
+			try
+			{
+				_repository.RefreshCurrencyInfo();
+			}
+			catch (ApiException)
+			{
+				message = "Can't refresh data. Probably API key is wrong";
+			}
 
 			return RedirectToAction(
 				actionName: nameof(GetCryptocurrenciesList),
-				new { pageIndex = pageIndex }
+				new { pageIndex = pageIndex, messageToUser = message }
 			);
 		}
 	}
