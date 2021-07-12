@@ -17,8 +17,6 @@ namespace CurrencyViewer.Models
 		{
 			_context = context;
 			_provider = provider;
-
-			LoadCurrencyFromServer();
 		}
 
 		public IEnumerable<CryptoCurrency> AllCurrency =>
@@ -29,7 +27,7 @@ namespace CurrencyViewer.Models
 
 		/// <summary>
 		/// Pulls data from API to database
-		///	Takes no effect if DB is empty
+		///	Takes no effect if DB is empty.
 		/// </summary>
 		public void RefreshCurrencyInfo()
 		{
@@ -59,7 +57,13 @@ namespace CurrencyViewer.Models
 			SaveChanges();
 		}
 
-		private void LoadCurrencyFromServer()
+		/// <summary>
+		/// Populates DB with data from server via API
+		/// if DB is empty.
+		/// Takes no effect if DB already has data.
+		/// Use RefreshCurrencyInfo method if DB already has data.
+		/// </summary>
+		public void LoadCurrencyFromServer()
 		{
 			if (_context.Currencies.Count() == 0)
 			{
