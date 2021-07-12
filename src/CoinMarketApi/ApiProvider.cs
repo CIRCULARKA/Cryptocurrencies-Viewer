@@ -16,6 +16,7 @@ namespace CurrencyViewer.CoinMarketApi
 		{
 			try { return _reader.ReadLine(); }
 			catch { return ""; }
+			finally { _reader.Close(); }
 		}
 	}
 }
