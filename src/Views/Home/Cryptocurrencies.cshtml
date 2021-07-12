@@ -1,57 +1,68 @@
 @model PaginatedList<CryptoCurrency>
 
-<div class="row">
-	<div class="col-6">
-		<a class="btn btn-secondary d-inline @(!Model.IsPrevPageAvailable ? "disabled" : "")"
-			href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex - 1)">Previous</a>
-		<p class="d-inline h-100">@Model.CurrentPageIndex / @Model.TotalPages</p>
-		<a href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex + 1)"
-			class="btn btn-secondary d-inline @(!Model.IsNextPageAvailable ? "disabled" : "")">Next</a>
-		<a class="mx-3 link-dark" asp-action="RefreshCurrencyList" asp-controller="Home"
-			asp-route-pageIndex="@Model.CurrentPageIndex"
-			style="text-decorations: none;">
-			<i class="fas fa-sync"></i>
-		</a>
+@if (Model.Count == 0)
+{
+	<div class="text-secondary start-50 top-50 translate-middle fs-1 position-absolute">
+		No Data
 	</div>
-</div>
-<div class="col-12">
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th scope="col"></th>
-				<th scope="col">Name</th>
-				<th scope="col">Symbol</th>
-				<th scope="col">Price</th>
-				<th scope="col">Last 1h dynamics</th>
-				<th scope="col">Last 24h dynamics</th>
-				<th scope="col">Capitalization</th>
-				<th scope="col">Last time updated</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var currency in Model)
-			{
+}
+else
+{
+	<div class="row">
+		<div class="col-6">
+			<a class="btn btn-secondary d-inline @(!Model.IsPrevPageAvailable ? "disabled" : "")"
+				href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex - 1)">Previous</a>
+			<p class="d-inline h-100">@Model.CurrentPageIndex / @Model.TotalPages</p>
+			<a href="/Home/GetCryptocurrenciesList?pageIndex=@(Model.CurrentPageIndex + 1)"
+				class="btn btn-secondary d-inline @(!Model.IsNextPageAvailable ? "disabled" : "")">Next</a>
+			<a class="mx-3 link-dark" asp-action="RefreshCurrencyList" asp-controller="Home"
+				asp-route-pageIndex="@Model.CurrentPageIndex"
+				style="text-decorations: none;">
+				<i class="fas fa-sync"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-12">
+		<table class="table text-center">
+			<thead>
 				<tr>
-					<th>
-						<img src="https://s2.coinmarketcap.com/static/img/coins/32x32/@(currency.CurrencyID).png">
-					</th>
-					<th>@currency.Name</th>
-					<th>@currency.Symbol</th>
-					<th>@string.Format("${0:0.000}", currency.Price)</th>
-					<th>
-						<p class="@(currency.Last1HourDynamics < 0 ? "text-danger" : "text-success")">
-							@(currency.Last1HourDynamics.ToString("F2") + "%")
-						</p>
-					</th>
-					<th>
-						<p class="@(currency.Last24HoursDynamics < 0 ? "text-danger" : "text-success")">
-							@(currency.Last24HoursDynamics.ToString("F2") + "%")
-						</p>
-					</th>
-					<th>@("$" + currency.MarketCapitalization)</th>
-					<th>@currency.LastTimeUpdated.ToString("dd MMMM yyyy h:mm tt", new CultureInfo("en-US"))</th>
+					<th scope="col"></th>
+					<th scope="col">Name</th>
+					<th scope="col">Symbol</th>
+					<th scope="col">Price</th>
+					<th scope="col">Last 1h dynamics</th>
+					<th scope="col">Last 24h dynamics</th>
+					<th scope="col">Capitalization</th>
+					<th scope="col">Last time updated</th>
 				</tr>
-			}
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				@foreach (var currency in Model)
+				{
+					<tr>
+						<th>
+							<img src="https://s2.coinmarketcap.com/static/img/coins/32x32/@(currency.CurrencyID).png">
+						</th>
+						<th>@currency.Name</th>
+						<th>@currency.Symbol</th>
+						<th>@string.Format("${0:0.000}", currency.Price)</th>
+						<th>
+							<p class="@(currency.Last1HourDynamics < 0 ? "text-danger" : "text-success")">
+								@(currency.Last1HourDynamics.ToString("F2") + "%")
+							</p>
+						</th>
+						<th>
+							<p class="@(currency.Last24HoursDynamics < 0 ? "text-danger" : "text-success")">
+								@(currency.Last24HoursDynamics.ToString("F2") + "%")
+							</p>
+						</th>
+						<th>@("$" + currency.MarketCapitalization)</th>
+						<th>@currency.LastTimeUpdated.ToString("dd MMMM yyyy h:mm tt", new CultureInfo("en-US"))</th>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+}
