@@ -15,8 +15,8 @@ namespace CurrencyViewer.Models.Factories
 			new DefaultRepository(
 				new DefaultDbContext(),
 				new CryptoCurrencyProvider(
-					_currencyEndpoint,
-					new Dictionary<string, string> {
+						_currencyEndpoint,
+						new Dictionary<string, string> {
 					},
 					new CryptoCurrencyDeserializer(),
 					new ApiProvider(
