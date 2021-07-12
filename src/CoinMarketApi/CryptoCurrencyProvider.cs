@@ -37,9 +37,12 @@ namespace CurrencyViewer.CoinMarketApi
 
 		public IEnumerable<CryptoCurrency> GetCurrencyFromRemoteServer()
 		{
-			var jsonData = _client.DownloadString(Request);
-
-			return _deserializer.DeserializeJsonData(jsonData);
+			try
+			{
+				var jsonData = _client.DownloadString(Request);
+				return _deserializer.DeserializeJsonData(jsonData);
+			}
+			catch { throw new Exception("Wrong API key"); }
 		}
 
 		private void SetQueryForEndpoint(IDictionary<string, string> parameters)
