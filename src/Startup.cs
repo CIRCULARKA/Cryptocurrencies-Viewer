@@ -1,19 +1,25 @@
+using System.IO;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using CurrencyViewer.Models;
-using CurrencyViewer.Models.Factories;
+using CurrencyViewer.CoinMarketApi;
 
 namespace CurrencyViewer
 {
 	public class Startup
 	{
+		private string _apiEndpointRoute =
+			"https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
 
 			services.AddDbContext<UsersDbContext>();
+			services.AddSingleton<DbContextBase, DefaultDbContext>();
 			services.AddIdentity<User, IdentityRole>(
 				options =>
 				{
@@ -26,10 +32,28 @@ namespace CurrencyViewer
 				}
 			).AddEntityFrameworkStores<UsersDbContext>();
 
-			services.AddSingleton<IRepository, DefaultRepository>(
-				services => new RepositoryFactory().
-					CreateDefaultRepository()
+			services.AddScoped<IApiProvider, ApiProvider>(
+				s => new ApiProvider(
+					new StreamReader(
+						new FileStream(
+							Directory.
+								GetCurrentDirectory() +
+								"\\src\\api.txt",
+							FileMode.OpenOrCreate
+						)
+					)
+				)
 			);
+			services.AddScoped<ICurrencyDeserializer<CryptoCurrency>, CryptoCurrencyDeserializer>();
+			services.AddScoped<ICurrencyProvider<CryptoCurrency>, CryptoCurrencyProvider>(
+				s => new CryptoCurrencyProvider(
+					_apiEndpointRoute,
+					new Dictionary<string, string> { },
+					s.GetService<ICurrencyDeserializer<CryptoCurrency>>(),
+					s.GetService<IApiProvider>()
+				)
+			);
+			services.AddScoped<IRepository, DefaultRepository>();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
