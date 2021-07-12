@@ -42,7 +42,7 @@ namespace CurrencyViewer.CoinMarketApi
 				var jsonData = _client.DownloadString(Request);
 				return _deserializer.DeserializeJsonData(jsonData);
 			}
-			catch { throw new Exception("Wrong API key"); }
+			catch (WebException e) { throw new ApiException($"Wrong API key ({e.Status}) "); }
 		}
 
 		private void SetQueryForEndpoint(IDictionary<string, string> parameters)
