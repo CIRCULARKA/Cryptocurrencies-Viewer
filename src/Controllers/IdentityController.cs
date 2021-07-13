@@ -59,7 +59,7 @@ namespace CurrencyViewer.Controllers
 		public async Task<IActionResult> AuthorizeUser(AuthorizationViewModel model)
 		{
 			if (!ModelState.IsValid)
-				return View(nameof(GetAuthorizationView), model);
+				return View("Authorization", model);
 
 			var authResult = await _signInManager.
 				PasswordSignInAsync(
