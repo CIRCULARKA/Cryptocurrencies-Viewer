@@ -38,7 +38,7 @@ namespace CurrencyViewer
 						new FileStream(
 							Directory.
 								GetCurrentDirectory() +
-								"\\src\\api.txt",
+								"\\api.txt",
 							FileMode.OpenOrCreate
 						)
 					)
